@@ -31,7 +31,7 @@ function App() {
       setPrevPhone(prevPhone.slice(0, -1));
     }
     setPhone(phoneNumber);
-    console.log(phoneNumber, " ", phone);
+    return phoneNumber;
   };
   const handleChange = (event) => {
     const phoneNumber = event.target.value;

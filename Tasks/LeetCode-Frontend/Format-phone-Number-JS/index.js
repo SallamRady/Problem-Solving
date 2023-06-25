@@ -1,6 +1,8 @@
 window.onload = () => {
   // Declaration
   let phone = document.getElementById("phone");
+  let check = true;
+  let prevVal = "";
 
   function formatPhoneNumberOnInput() {
     // Remove all non-digits from the phone number
@@ -15,9 +17,20 @@ window.onload = () => {
     }
 
     // Update the input field value with the formatted phone number
-    console.log(phoneNumber);
+    if (check) {
+      prevVal = phoneNumber;
+      check = false;
+    }
+
+    if (phoneNumber.length > prevVal.length) {
+      prevVal = phoneNumber;
+    } else if (phoneNumber.length < prevVal.length) {
+      phoneNumber = prevVal.slice(0, -1);
+      prevVal = prevVal.slice(0, -1);
+    }
+    console.log(prevVal,phoneNumber);[]
     phone.value = phoneNumber;
   }
 
-  phone.addEventListener("input",formatPhoneNumberOnInput);
+  phone.addEventListener("input", formatPhoneNumberOnInput);
 };
