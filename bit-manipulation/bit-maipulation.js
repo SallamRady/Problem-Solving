@@ -20,6 +20,20 @@ function countBits1(num) {
   return counter;
 }
 
+function countBits(num) {
+  let counter = 0;
+  while (num) {
+    counter++;
+    num = num >> 1; //remove first 1 from right
+  }
+  return counter;
+}
+
+function findComplement(num) {
+  let mask = (1 << countBits(num)) - 1;
+  return num ^ mask;
+}
+
 //index from right / 0-based
 function getBit(num, idx) {
   num = num >> idx;
