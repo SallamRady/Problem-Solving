@@ -36,7 +36,6 @@ void File()
 }
 
 ///***** Divide and conquer *****///
-
 int getBit(int num, int idx)
 {
     num = num >> idx;
