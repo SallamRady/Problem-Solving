@@ -95,7 +95,7 @@ class SingleLinkedList {
     /**
      * getByIndex return node of specific element.
      * complixty : O(n)
-     * @param {*} idx index of element you want.
+     * @param {*} index index of element you want.
      * @returns node of incomming index.    
      */
     getByIndex(index) {
