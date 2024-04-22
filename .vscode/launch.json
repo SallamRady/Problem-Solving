@@ -7,9 +7,9 @@
       "request": "launch",
       "args": [],
       "stopAtEntry": false,
-      "externalConsole": true,
-      "cwd": "d:/ProblemSolving/Problem-Solving/codeforces/Assuit-ICPC/sheet-1",
-      "program": "d:/ProblemSolving/Problem-Solving/codeforces/Assuit-ICPC/sheet-1/build/Debug/outDebug",
+      "externalConsole": false,
+      "cwd": "/media/sallam/Sallam P167/JS Master/Problem-Solving/codeforces/Assuit-ICPC/01.Sheet-1",
+      "program": "/media/sallam/Sallam P167/JS Master/Problem-Solving/codeforces/Assuit-ICPC/01.Sheet-1/build/Debug/outDebug",
       "MIMode": "gdb",
       "miDebuggerPath": "gdb",
       "setupCommands": [
@@ -19,6 +19,32 @@
           "ignoreFailures": true
         }
       ]
+    },
+    {
+      "name": "C/C++: g++ build and debug active file",
+      "type": "cppdbg",
+      "request": "launch",
+      "program": "${fileDirname}/${fileBasenameNoExtension}",
+      "args": [],
+      "stopAtEntry": false,
+      "cwd": "${fileDirname}",
+      "environment": [],
+      "externalConsole": false,
+      "MIMode": "gdb",
+      "setupCommands": [
+        {
+          "description": "Enable pretty-printing for gdb",
+          "text": "-enable-pretty-printing",
+          "ignoreFailures": true
+        },
+        {
+          "description": "Set Disassembly Flavor to Intel",
+          "text": "-gdb-set disassembly-flavor intel",
+          "ignoreFailures": true
+        }
+      ],
+      "preLaunchTask": "C/C++: g++ build active file",
+      "miDebuggerPath": "/usr/bin/gdb"
     }
   ]
 }
