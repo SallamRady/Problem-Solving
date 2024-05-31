@@ -146,11 +146,28 @@ void solution()
 {
     // *declare our variables..
     int n;
+    map<char, int> frq;
+    char ch;
     // *input
     cin >> n;
     // *proccessing...
-    Fibonacci(n);
+    while (n--)
+    {
+        cin >> ch;
+        if (frq.count(ch))
+            frq[ch]++;
+        else
+            frq[ch] = 1;
+    }
+    for (auto f : frq)
+    {
+        while (f.second--)
+        {
+            cout << f.first;
+        }
+    }
     // *Output....
+    cout << endl;
 };
 
 int main()

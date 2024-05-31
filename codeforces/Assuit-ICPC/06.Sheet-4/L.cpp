@@ -26,35 +26,62 @@ using namespace std;
 void solution()
 {
     // *declare our variables..
-    int testcases, n, mx;
+    int n, q, x = 0, l = 0, r = 0;
+    string str, query;
+    char ch = 'a';
     // *input
-    cin >> testcases;
+    cin >> n >> q >> str;
     // *proccessing...
-    while (testcases--)
+    while (q--)
     {
-        cin >> n;
-        vector<int> arr(n);
-        scan(arr);
-
-        for (int start = 0; start < n; start++)
+        cin >> query;
+        if (query == "pop_back")
         {
-            for (int end = start; end < n; end++)
-            {
-                for (int i = start; i <= end; ++i)
-                {
-                    if (i == start)
-                    {
-                        mx = arr[i];
-                    }
-                    else
-                    {
-                        mx = max(mx, arr[i]);
-                    }
-                }
-                cout << mx << " ";
-            }
+            str.pop_back();
         }
-        cout << endl;
+        else if (query == "front")
+        {
+            cout << str.front() << endl;
+        }
+        else if (query == "back")
+        {
+            cout << str.back() << endl;
+        }
+        else if (query == "sort")
+        {
+            cin >> l >> r;
+            if (l > r)
+                swap(l, r);
+            l--;
+            sort(str.begin() + l, str.begin() + r);
+        }
+        else if (query == "reverse")
+        {
+            cin >> l >> r;
+            if (l > r)
+                swap(l, r);
+            l--;
+            reverse(str.begin() + l, str.begin() + r);
+        }
+        else if (query == "print")
+        {
+            cin >> x;
+            x--;
+            cout << str[x] << endl;
+        }
+        else if (query == "substr")
+        {
+            cin >> l >> r;
+            if (l > r)
+                swap(l, r);
+            l--;
+            cout << str.substr(l, r - l) << endl;
+        }
+        else if (query == "push_back")
+        {
+            cin >> ch;
+            str.push_back(ch);
+        }
     }
     // *Output....
 };

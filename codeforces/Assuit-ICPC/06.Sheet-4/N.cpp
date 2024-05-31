@@ -36,20 +36,23 @@ int charIndex(string str, char ch)
 void solution()
 {
     // *declare our variables..
-    int a, b, splitterCount = 0;
+    int n, counter = 1;
+    char prev;
     string str;
     // *input
-    cin >> a >> b;
-    cin >> str;
+    cin >> n >> str;
     // *proccessing...
-    for (auto c : str)
-        if (c == '-')
-            splitterCount++;
-    if ((str.size() == (a + b + 1)) && charIndex(str, '-') == a && splitterCount == 1)
-        cout << "Yes" << endl;
-    else
-        cout << "No" << endl;
+    prev = str[0];
+    for (int i = 1; i < n; i++)
+    {
+        if (prev != str[i])
+        {
+            counter++;
+            prev = str[i];
+        }
+    }
     // *Output...
+    cout << counter << endl;
 };
 
 int main()

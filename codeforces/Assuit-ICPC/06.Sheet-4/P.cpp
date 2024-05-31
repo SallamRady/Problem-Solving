@@ -146,33 +146,30 @@ void solution()
 {
     // *declare our variables..
     int n, counter = 0;
-    bool valid = true;
+    string str, delimiters = "!. ?,", current = "";
     // *input
-    cin >> n;
-    int arr[n];
-
-    for (int i = 0; i < n; i++)
-        cin >> arr[i];
-
+    getline(cin, str);
     // *proccessing...
-    while (valid)
+    n = str.size();
+    for (char ch : str)
     {
-        for (int i = 0; i < n; i++)
+        if (delimiters.find(ch) != string::npos)
         {
-            if (arr[i] % 2 == 0)
+            if (current.size())
             {
-                arr[i] /= 2;
-            }
-            else
-            {
-                valid = false;
-                break;
+                current = "";
+                counter++;
             }
         }
-        if (valid)
+        else
         {
-            counter++;
+            current += ch;
         }
+    }
+    if (current.size())
+    {
+        current = "";
+        counter++;
     }
     // *Output....
     cout << counter << endl;

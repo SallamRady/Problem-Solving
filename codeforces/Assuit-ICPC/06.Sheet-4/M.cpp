@@ -26,38 +26,26 @@ using namespace std;
 void solution()
 {
     // *declare our variables..
-    int n, mn, mx;
+    string str, hello = "hello";
+    int n;
     // *input
-    cin >> n;
-    vector<int> arr(n);
+    cin >> str;
     // *proccessing...
-    for (int i = 0; i < n; i++)
+    n = str.size();
+    for (int i = n - 1; i >= 0; i--)
     {
-        cin >> arr[i];
-        if (i == 0)
+        if (str[i] == hello.back())
         {
-            mn = arr[i];
-            mx = arr[i];
-        }
-        else
-        {
-            if (arr[i] < mn)
-                mn = arr[i];
-
-            if (arr[i] > mx)
-                mx = arr[i];
+            hello.pop_back();
+            if (hello.size() == 0)
+            {
+                cout << "YES" << endl;
+                return;
+            }
         }
     }
     // *Output
-    for (int i = 0; i < n; i++)
-    {
-        if (arr[i] == mn)
-            cout << mx << " ";
-        else if (arr[i] == mx)
-            cout << mn << " ";
-        else
-            cout << arr[i] << " ";
-    }
+    cout << "NO" << endl;
 };
 
 int main()

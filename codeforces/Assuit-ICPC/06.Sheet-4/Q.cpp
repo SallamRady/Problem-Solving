@@ -141,54 +141,36 @@ int charIndex(string str, char ch)
     return -1;
 }
 
-// * Get subarrays of array.
-void SubArraysOperation(vector<int> arr)
-{
-    int n = arr.size(), counter = 0;
-    bool valid = true;
-
-    for (int start = 0; start < n; start++)
-    {
-        for (int end = start; end < n; end++)
-        {
-            valid = true;
-            // for (int i = start; i <= end; ++i) - original
-            for (int i = start; i < end; ++i)
-            {
-                // * This is sub array....
-                if (arr[i] > arr[i + 1])
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            if (valid)
-                counter++;
-        }
-    }
-
-    cout << counter << endl;
-}
-
 // TODO::declare and define helper functions and variables
 void solution()
 {
     // *declare our variables..
-    int testcases, n;
+    int n;
+    string str, delimiters = "!. ?,", current = "";
     // *input
-    cin >> testcases;
-
-    for (int i = 0; i < testcases; i++)
-    {
-        cin >> n;
-        vector<int> arr(n);
-        for (auto &a : arr)
-            cin >> a;
-
-        SubArraysOperation(arr);
-    }
-
+    getline(cin, str);
     // *proccessing...
+    n = str.size();
+    for (char ch : str)
+    {
+        if (delimiters.find(ch) != string::npos)
+        {
+            if (current.size())
+            {
+                cout << current << " ";
+                current = "";
+            }
+        }
+        else
+        {
+            current = ch + current;
+        }
+    }
+    if (current.size())
+    {
+        cout << current << endl;
+        current = "";
+    }
     // *Output....
 };
 
