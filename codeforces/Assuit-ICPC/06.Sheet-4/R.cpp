@@ -174,8 +174,8 @@ void SubArraysOperation(vector<int> arr)
 void solution()
 {
     // *declare our variables..
-    int n, x;
-    map<int, int> frq;
+    string str;
+    int count = 0,n;
     // *input
     cin >> n;
     // *proccessing...
