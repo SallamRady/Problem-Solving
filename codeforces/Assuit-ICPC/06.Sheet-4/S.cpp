@@ -141,58 +141,46 @@ int charIndex(string str, char ch)
     return -1;
 }
 
-// * Get subarrays of array.
-void SubArraysOperation(vector<int> arr)
-{
-    int n = arr.size(), counter = 0;
-    bool valid = true;
-
-    for (int start = 0; start < n; start++)
-    {
-        for (int end = start; end < n; end++)
-        {
-            valid = true;
-            // for (int i = start; i <= end; ++i) - original
-            for (int i = start; i < end; ++i)
-            {
-                // * This is sub array....
-                if (arr[i] > arr[i + 1])
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            if (valid)
-                counter++;
-        }
-    }
-
-    cout << counter << endl;
-}
-
 // TODO::declare and define helper functions and variables
 void solution()
 {
     // *declare our variables..
-    int n, m, x;
-    map<int, int> frq;
+    string str, subStr = "";
+    vector<string> answer;
+    int lcount = 0, rcount = 0, n, reminder = 0;
     // *input
-    cin >> n >> m;
+    cin >> str;
     // *proccessing...
+    n = str.size();
     for (int i = 0; i < n; i++)
     {
-        for (int j = 0; j < m; j++)
+        if (str[i] == 'L')
+            lcount++;
+        else
+            rcount++;
+
+        subStr += str[i];
+
+        if (lcount == rcount)
         {
-            cin >> x;
-            if (frq.count(x) == 0)
-                frq[x] = 1;
-            else
-                frq[x]++;
+            answer.push_back(subStr);
+            subStr = "";
+            lcount = 0;
+            rcount = 0;
         }
     }
-    cin >> x;
+
+    reminder = min(lcount, rcount);
+    if (reminder != 0)
+    {
+        str = subStr.substr(0, reminder * 2);
+        answer.push_back(str);
+    }
+
     // *Output....
-    cout << (frq.count(x) == 0 ? "will take number" : "will not take number") << endl;
+    cout << answer.size() << endl;
+    for (auto a : answer)
+        cout << a << endl;
 };
 
 int main()

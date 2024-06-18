@@ -3,6 +3,7 @@
 #include <cmath>
 #include <bitset>
 #include <string>
+#include <cstring>
 #include <algorithm>
 #include <set>
 #include <map>
@@ -141,56 +142,38 @@ int charIndex(string str, char ch)
     return -1;
 }
 
-// * Get subarrays of array.
-void SubArraysOperation(vector<int> arr)
+vector<string> splitString(const string &str, char delimiter)
 {
-    int n = arr.size(), counter = 0;
-    bool valid = true;
+    vector<string> tokens;
+    stringstream ss(str);
+    string token;
 
-    for (int start = 0; start < n; start++)
+    while (getline(ss, token, delimiter))
     {
-        for (int end = start; end < n; end++)
-        {
-            valid = true;
-            // for (int i = start; i <= end; ++i) - original
-            for (int i = start; i < end; ++i)
-            {
-                // * This is sub array....
-                if (arr[i] > arr[i + 1])
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            if (valid)
-                counter++;
-        }
+        tokens.push_back(token);
     }
 
-    cout << counter << endl;
+    return tokens;
 }
 
 // TODO::declare and define helper functions and variables
 void solution()
 {
     // *declare our variables..
-    int n, x, primaryDiagonal = 0, secondaryDiagonal = 0;
+    string str;
+    int questionMarkIdx = 0;
     // *input
-    cin >> n;
+    cin >> str;
     // *proccessing...
-    for (int i = 0; i < n; i++)
+    questionMarkIdx = str.find('?');
+    str = str.substr(questionMarkIdx + 1);
+    vector<string> arr = splitString(str, '&');
+    for (auto term : arr)
     {
-        for (int j = 0; j < n; j++)
-        {
-            cin >> x;
-            if (i == j)
-                primaryDiagonal += x;
-            if (i + j == n - 1)
-                secondaryDiagonal += x;
-        }
+        vector<string> params = splitString(term, '=');
+        cout << params[0] << ": " << params[1] << endl;
     }
     // *Output....
-    cout << abs(primaryDiagonal - secondaryDiagonal) << endl;
 };
 
 int main()

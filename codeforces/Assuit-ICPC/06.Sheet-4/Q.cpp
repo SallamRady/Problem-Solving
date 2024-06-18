@@ -145,31 +145,31 @@ int charIndex(string str, char ch)
 void solution()
 {
     // *declare our variables..
+    string str, word = "";
     int n;
-    string str, delimiters = "!. ?,", current = "";
     // *input
-    getline(cin, str);
+    getline(cin,str);
     // *proccessing...
     n = str.size();
     for (char ch : str)
     {
-        if (delimiters.find(ch) != string::npos)
+        if (ch == ' ')
         {
-            if (current.size())
+            if (word.size())
             {
-                cout << current << " ";
-                current = "";
+                cout << word << " ";
+                word = "";
             }
         }
         else
         {
-            current = ch + current;
+            word = ch + word;
         }
     }
-    if (current.size())
+    if (word.size())
     {
-        cout << current << endl;
-        current = "";
+        cout << word << endl;
+        word = "";
     }
     // *Output....
 };

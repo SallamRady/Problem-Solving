@@ -141,71 +141,54 @@ int charIndex(string str, char ch)
     return -1;
 }
 
-// * Get subarrays of array.
-void SubArraysOperation(vector<int> arr)
-{
-    int n = arr.size(), counter = 0;
-    bool valid = true;
-
-    for (int start = 0; start < n; start++)
-    {
-        for (int end = start; end < n; end++)
-        {
-            valid = true;
-            // for (int i = start; i <= end; ++i) - original
-            for (int i = start; i < end; ++i)
-            {
-                // * This is sub array....
-                if (arr[i] > arr[i + 1])
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            if (valid)
-                counter++;
-        }
-    }
-
-    cout << counter << endl;
-}
-
 // TODO::declare and define helper functions and variables
 void solution()
 {
     // *declare our variables..
     string str;
-    int count = 0,n;
+    int n, result = 0;
     // *input
-    cin >> n;
+    cin >> n >> str;
     // *proccessing...
-    for (int i = 0; i < n; i++)
+    for (int i = 0; i < str.size(); i++)
     {
-        cin >> x;
-        if (frq.count(x) > 0)
-            frq[x]++;
-        else
-            frq[x] = 1;
-    }
-    for (int i = 0; i < n; i++)
-    {
-        cin >> x;
-        if (frq.count(x) > 0)
-            frq[x]--;
-        else
-            frq[x] = 1;
-    }
-
-    for (auto a : frq)
-    {
-        if (a.second != 0)
+        switch (str[i])
         {
-            cout << "no" << endl;
-            return;
+        case 'V':
+            result += 5;
+            break;
+        case 'W':
+            result += 2;
+            break;
+        case 'X':
+            i++;
+            break;
+        case 'Y':
+            if (i != str.size() - 1)
+            {
+                str.push_back(str[i + 1]);
+                i++;
+            }
+            break;
+        case 'Z':
+            if (i != str.size() - 1)
+            {
+                if (str[i + 1] == 'V')
+                {
+                    result /= 5;
+                    i++;
+                }
+                else if (str[i + 1] == 'W')
+                {
+                    result /= 2;
+                    i++;
+                }
+            }
+            break;
         }
     }
     // *Output....
-    cout << "yes" << endl;
+    cout << result << endl;
 };
 
 int main()
